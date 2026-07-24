@@ -14,14 +14,10 @@ export const siteConfig = {
 
   whatsapp: "60163040646",
 
-  address: `No.6, Jalan Bukit Mewah 9/12,
-Taman Bukit Mewah Fasa 9,
-43000 Kajang,
-Selangor,
-Malaysia`,
+  address: "Malaysia (Office address available upon request)",
 
   googleMaps:
-    "https://maps.google.com/?q=No.6+Jalan+Bukit+Mewah+9/12+Kajang+Selangor",
+    "https://maps.google.com/?q=No.10+Jalan+Bukit+Mewah+9/12+Kajang+Selangor",
 
   socials: {
     facebook: "#",

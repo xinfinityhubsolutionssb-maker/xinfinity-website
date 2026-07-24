@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
+import { ArrowRight } from "lucide-react";
 
 import logo from "@/assets/logo/logo.png";
 import { navigation } from "@/data/navigation";
@@ -28,10 +29,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
   return (
     <header
       className={`fixed inset-x-0 top-10 z-50 transition-all duration-300 ${
@@ -45,19 +42,19 @@ export default function Navbar() {
 
         <Link
           href="/"
-          className="flex items-center gap-3"
+          className="group flex items-center gap-3 transition-all duration-300"
         >
           <Image
             src={logo}
             alt="XINFINITY HUB SOLUTIONS"
             width={52}
             height={52}
-            className="h-12 w-auto transition duration-300 hover:scale-105"
+            className="h-12 w-auto transition-all duration-500 group-hover:scale-105 group-hover:drop-shadow-[0_0_18px_rgba(234,179,8,0.45)]"
             priority
           />
 
           <div>
-            <h2 className="text-lg font-bold tracking-wider text-white">
+            <h2 className="bg-gradient-to-r from-white via-white to-yellow-300 bg-clip-text text-lg font-bold tracking-wider text-transparent transition-all duration-500 group-hover:from-yellow-300 group-hover:to-white">
               {siteConfig.shortName}
             </h2>
 
@@ -77,8 +74,9 @@ export default function Navbar() {
 
             return (
               <Link
-                key={item.title}
-                href={item.href}
+                  key={item.title}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
                 className={`relative text-sm font-medium transition duration-300 ${
                   active
                     ? "text-yellow-500"
@@ -100,11 +98,30 @@ export default function Navbar() {
         {/* CTA */}
 
         <Link
-          href="/contact"
-          className="hidden rounded-xl bg-yellow-500 px-6 py-3 font-semibold text-black transition duration-300 hover:scale-105 hover:bg-yellow-400 lg:inline-flex"
-        >
-          Get Quote
-        </Link>
+  href="/contact"
+  onClick={() => setOpen(false)}
+  className="group relative hidden overflow-hidden rounded-full border border-yellow-500/30 bg-white/5 px-2 py-2 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-yellow-400 lg:inline-flex"
+>
+  <span className="absolute inset-0 bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+  <span className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.35),transparent_65%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+  <span className="relative flex items-center gap-3 px-4 py-2">
+    <span className="relative flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-yellow-300 via-yellow-500 to-amber-600 text-black shadow-[0_0_25px_rgba(234,179,8,0.45)] transition-all duration-500 group-hover:scale-110 group-hover:rotate-12">
+  <span className="absolute inset-0 rounded-full animate-ping bg-yellow-400/20"></span>
+  ✦
+</span>
+
+    <span className="font-semibold tracking-wide text-white transition-colors duration-500 group-hover:text-black">
+    Get Quote
+</span>
+
+    <ArrowRight
+      size={18}
+      className="text-white transition-all duration-500 group-hover:translate-x-1 group-hover:text-black"
+    />
+  </span>
+</Link>
 
         {/* Mobile Button */}
 
@@ -147,11 +164,20 @@ export default function Navbar() {
           })}
 
           <Link
-            href="/contact"
-            className="mt-6 block rounded-xl bg-yellow-500 px-5 py-3 text-center font-semibold text-black transition hover:bg-yellow-400"
-          >
-            Get Quote
-          </Link>
+  href="/contact"
+  className="group mt-6 flex items-center justify-center gap-3 overflow-hidden rounded-2xl border border-yellow-500/30 bg-white/5 px-5 py-4 font-semibold text-white backdrop-blur transition-all duration-300 hover:border-yellow-400 hover:bg-yellow-500 hover:text-black"
+>
+  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-yellow-500 text-black transition-transform duration-300 group-hover:rotate-12">
+    ✦
+  </span>
+
+  <span>Get Quote</span>
+
+  <ArrowRight
+    size={18}
+    className="transition-transform duration-300 group-hover:translate-x-1"
+  />
+</Link>
         </div>
       </div>
     </header>

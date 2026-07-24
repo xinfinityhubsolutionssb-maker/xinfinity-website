@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import ContactSection from "@/components/sections/ContactSection";
 
 export const metadata: Metadata = {
@@ -38,23 +40,37 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <main className="bg-[#05070F] text-white">
-      <section className="border-b border-white/10 pt-40 pb-24">
-        <div className="container">
-          <span className="font-semibold tracking-widest text-yellow-500">
-            CONTACT US
-          </span>
+      <section className="relative overflow-hidden border-b border-white/10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(234,179,8,0.08),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(37,99,235,0.08),transparent_35%)]" />
 
-          <h1 className="mt-6 text-5xl font-black lg:text-7xl">
-            Let's Build
-            <br />
-            Something Great
-          </h1>
+        <div className="container relative py-28">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 rounded-full border border-yellow-500/30 bg-white/5 px-5 py-3 text-sm font-semibold text-yellow-400 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400 hover:bg-yellow-500 hover:text-black"
+          >
+            <ArrowLeft size={18} />
+            Back to Home
+          </Link>
 
-          <p className="mt-8 max-w-3xl text-lg leading-8 text-gray-400">
-            Whether you need a custom software solution, ERP implementation,
-            website, mobile application or IT consultation, our team is ready
-            to help.
-          </p>
+          <div className="mt-16">
+            <span className="inline-flex rounded-full border border-yellow-500/20 bg-yellow-500/10 px-5 py-2 text-sm font-semibold tracking-[0.18em] text-yellow-500">
+              CONTACT US
+            </span>
+
+            <h1 className="mt-6 max-w-4xl text-5xl font-black leading-tight lg:text-7xl">
+              Let&apos;s Build The
+              <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-white bg-clip-text text-transparent">
+                {" "}
+                Future Together
+              </span>
+            </h1>
+
+            <p className="mt-8 max-w-3xl text-lg leading-9 text-gray-300">
+              Whether you need enterprise software, ERP implementation,
+              corporate websites, mobile applications or digital transformation
+              services, our team is ready to help bring your vision to life.
+            </p>
+          </div>
         </div>
       </section>
 

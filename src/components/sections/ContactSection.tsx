@@ -3,6 +3,12 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  Mail,
+  MapPin,
+  Phone,
+  ArrowRight,
+} from "lucide-react";
 
 import { siteConfig } from "@/config/site";
 import {
@@ -54,7 +60,7 @@ export default function ContactSection() {
       }
 
       setSuccess(
-        "Thank you! Your message has been sent successfully. We will contact you soon."
+        "Thank you. Your enquiry has been submitted successfully. Our team will get back to you as soon as possible."
       );
 
       reset();
@@ -70,24 +76,32 @@ export default function ContactSection() {
   }
 
   return (
-    <section className="bg-[#0B1120] py-24">
-      <div className="container">
-        <div className="mb-16 text-center">
-          <h2 className="text-5xl font-bold text-white">
-            Let's Build Something Great Together
+    <section className="relative overflow-hidden bg-[#0B1120] py-28">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(234,179,8,0.08),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(37,99,235,0.08),transparent_35%)]" />
+
+      <div className="container relative z-10">
+        <div className="mx-auto mb-16 max-w-4xl text-center">
+          <span className="inline-flex rounded-full border border-yellow-500/20 bg-yellow-500/10 px-5 py-2 text-sm font-semibold tracking-[0.18em] text-yellow-500">
+            CONTACT US
+          </span>
+
+          <h2 className="mt-8 text-4xl font-black leading-tight text-white lg:text-6xl">
+            Let&apos;s Build The
+            <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-white bg-clip-text text-transparent">
+              {" "}
+              Future Together
+            </span>
           </h2>
 
-          <p className="mx-auto mt-6 max-w-3xl text-lg text-gray-300">
-            Whether you need software development, business systems,
-            websites, mobile apps or IT solutions, we're ready to help.
+          <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-gray-300">
+            Whether you&apos;re planning a new project, modernising an existing
+            system or exploring digital transformation, we&apos;re ready to help.
           </p>
         </div>
 
         <div className="grid gap-10 lg:grid-cols-2">
-          {/* Contact Form */}
-
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur">
-            <h3 className="mb-8 text-2xl font-bold text-white">
+          <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-[#111827] to-[#0B1120] p-8 backdrop-blur-xl">
+            <h3 className="mb-8 text-3xl font-bold text-white">
               Send Us A Message
             </h3>
 
@@ -107,10 +121,10 @@ export default function ContactSection() {
                 <input
                   {...register("name")}
                   placeholder="Full Name *"
-                  className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-white outline-none focus:border-blue-500"
+                  className="w-full rounded-xl border border-white/10 bg-black/20 px-5 py-4 text-white outline-none transition focus:border-yellow-500"
                 />
                 {errors.name && (
-                  <p className="mt-1 text-sm text-red-400">
+                  <p className="mt-2 text-sm text-red-400">
                     {errors.name.message}
                   </p>
                 )}
@@ -119,8 +133,8 @@ export default function ContactSection() {
               <div>
                 <input
                   {...register("company")}
-                  placeholder="Company"
-                  className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-white outline-none focus:border-blue-500"
+                  placeholder="Company Name"
+                  className="w-full rounded-xl border border-white/10 bg-black/20 px-5 py-4 text-white outline-none transition focus:border-yellow-500"
                 />
               </div>
 
@@ -129,10 +143,10 @@ export default function ContactSection() {
                   type="email"
                   {...register("email")}
                   placeholder="Email Address *"
-                  className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-white outline-none focus:border-blue-500"
+                  className="w-full rounded-xl border border-white/10 bg-black/20 px-5 py-4 text-white outline-none transition focus:border-yellow-500"
                 />
                 {errors.email && (
-                  <p className="mt-1 text-sm text-red-400">
+                  <p className="mt-2 text-sm text-red-400">
                     {errors.email.message}
                   </p>
                 )}
@@ -142,7 +156,7 @@ export default function ContactSection() {
                 <input
                   {...register("phone")}
                   placeholder="Phone Number"
-                  className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-white outline-none focus:border-blue-500"
+                  className="w-full rounded-xl border border-white/10 bg-black/20 px-5 py-4 text-white outline-none transition focus:border-yellow-500"
                 />
               </div>
 
@@ -150,10 +164,10 @@ export default function ContactSection() {
                 <input
                   {...register("subject")}
                   placeholder="Subject *"
-                  className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-white outline-none focus:border-blue-500"
+                  className="w-full rounded-xl border border-white/10 bg-black/20 px-5 py-4 text-white outline-none transition focus:border-yellow-500"
                 />
                 {errors.subject && (
-                  <p className="mt-1 text-sm text-red-400">
+                  <p className="mt-2 text-sm text-red-400">
                     {errors.subject.message}
                   </p>
                 )}
@@ -163,11 +177,11 @@ export default function ContactSection() {
                 <textarea
                   rows={6}
                   {...register("message")}
-                  placeholder="Your Message *"
-                  className="w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-white outline-none focus:border-blue-500"
+                  placeholder="Tell us about your project *"
+                  className="w-full rounded-xl border border-white/10 bg-black/20 px-5 py-4 text-white outline-none transition focus:border-yellow-500"
                 />
                 {errors.message && (
-                  <p className="mt-1 text-sm text-red-400">
+                  <p className="mt-2 text-sm text-red-400">
                     {errors.message.message}
                   </p>
                 )}
@@ -188,39 +202,84 @@ export default function ContactSection() {
               <button
                 type="submit"
                 disabled={sending}
-                className="w-full rounded-xl bg-blue-600 px-6 py-4 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-yellow-500 px-6 py-4 font-semibold text-black transition hover:bg-yellow-400 disabled:opacity-60"
               >
                 {sending ? "Sending..." : "Send Message"}
+
+                {!sending && <ArrowRight size={18} />}
               </button>
             </form>
           </div>
 
-          {/* Contact Info */}
-
           <div className="space-y-8">
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur">
-              <h3 className="mb-6 text-2xl font-bold text-white">
+            <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-[#111827] to-[#0B1120] p-8 backdrop-blur-xl">
+              <h3 className="mb-8 text-3xl font-bold text-white">
                 Contact Information
               </h3>
 
-              <div className="space-y-5 text-gray-300">
-                <p>📞 {siteConfig.phone}</p>
+              <div className="space-y-8">
+                <div className="flex items-start gap-4">
+                  <div className="rounded-2xl bg-yellow-500 p-3 text-black">
+                    <Phone size={22} />
+                  </div>
 
-                <p>📧 {siteConfig.email}</p>
+                  <div>
+                    <h4 className="font-semibold text-white">Phone</h4>
+                    <p className="mt-2 text-gray-300">{siteConfig.phone}</p>
+                  </div>
+                </div>
 
-                <p className="whitespace-pre-line">
-                  📍 {siteConfig.address}
-                </p>
+                <div className="flex items-start gap-4">
+                  <div className="rounded-2xl bg-yellow-500 p-3 text-black">
+                    <Mail size={22} />
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold text-white">Email</h4>
+                    <p className="mt-2 text-gray-300">{siteConfig.email}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="rounded-2xl bg-yellow-500 p-3 text-black">
+                    <MapPin size={22} />
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold text-white">
+                      Office Address
+                    </h4>
+
+                    <p className="mt-2 leading-8 text-gray-300">
+                      Our permanent office location will be announced soon.
+                      <br />
+                      <br />
+                      Please contact us to arrange a meeting or request our
+                      business office address.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="overflow-hidden rounded-3xl border border-white/10">
-              <iframe
-                src="https://www.google.com/maps?q=No.6,Jalan+Bukit+Mewah+9/12,Kajang,Selangor&output=embed"
-                className="h-[420px] w-full border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
+            <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-[#111827] to-[#0B1120] p-8 backdrop-blur-xl">
+              <h3 className="text-3xl font-bold text-white">
+                Ready To Start?
+              </h3>
+
+              <p className="mt-6 leading-8 text-gray-300">
+                Tell us about your project and our team will discuss the best
+                solution for your business.
+              </p>
+
+              <a
+                href="mailto:xinfinityhubsolutionssb@gmail.com"
+                className="mt-8 inline-flex items-center gap-2 rounded-xl bg-yellow-500 px-6 py-4 font-semibold text-black transition hover:bg-yellow-400"
+              >
+                Email Our Team
+
+                <ArrowRight size={18} />
+              </a>
             </div>
           </div>
         </div>

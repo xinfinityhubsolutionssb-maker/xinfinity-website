@@ -88,25 +88,38 @@ const solutions = [
 export default function SolutionsPage() {
   return (
     <main className="bg-[#05070F] text-white">
-      <section className="border-b border-white/10 pt-40 pb-24">
-        <div className="container">
-          <span className="font-semibold tracking-widest text-yellow-500">
-            BUSINESS SOLUTIONS
-          </span>
+      <section className="relative overflow-hidden border-b border-white/10">
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(234,179,8,0.08),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(37,99,235,0.08),transparent_35%)]" />
 
-          <h1 className="mt-6 text-5xl font-black lg:text-7xl">
-            Smart Solutions
-            <br />
-            For Business Growth
-          </h1>
+  <div className="container relative py-28">
+    <Link
+      href="/"
+      className="inline-flex items-center gap-2 rounded-full border border-yellow-500/30 bg-white/5 px-5 py-3 text-sm font-semibold text-yellow-400 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400 hover:bg-yellow-500 hover:text-black"
+    >
+      ← Back to Home
+    </Link>
 
-          <p className="mt-8 max-w-3xl text-lg leading-8 text-gray-400">
-            We deliver integrated business solutions that improve efficiency,
-            automate workflows and help organizations make better business
-            decisions.
-          </p>
-        </div>
-      </section>
+    <div className="mt-16">
+      <span className="inline-flex rounded-full border border-yellow-500/20 bg-yellow-500/10 px-5 py-2 text-sm font-semibold tracking-[0.18em] text-yellow-500">
+        BUSINESS SOLUTIONS
+      </span>
+
+      <h1 className="mt-6 max-w-4xl text-5xl font-black leading-tight lg:text-7xl">
+        Intelligent
+        <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-white bg-clip-text text-transparent">
+          {" "}
+          Business Solutions
+        </span>
+      </h1>
+
+      <p className="mt-8 max-w-3xl text-lg leading-9 text-gray-300">
+        We develop enterprise platforms that automate operations, improve
+        decision-making and enable organisations to scale confidently through
+        modern digital technologies.
+      </p>
+    </div>
+  </div>
+</section>
 
       <section className="py-24">
         <div className="container grid gap-8 md:grid-cols-2 xl:grid-cols-3">

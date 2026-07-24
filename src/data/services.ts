@@ -24,6 +24,12 @@ export const services = [
     icon: "Building2",
   },
   {
+    title: "Project & Tender Support",
+    description:
+      "Professional administrative, tender documentation, project coordination, and compliance support for Government, GLC, and corporate organizations.",
+    icon: "ClipboardCheck",
+  },
+  {
     title: "Hardware Supply",
     description:
       "Supply of computers, networking equipment, POS systems, and business hardware solutions.",

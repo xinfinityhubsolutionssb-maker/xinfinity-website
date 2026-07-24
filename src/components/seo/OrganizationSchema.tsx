@@ -17,15 +17,15 @@ export default function OrganizationSchema() {
     telephone: "+60-16-3040646",
 
     address: {
-      "@type": "PostalAddress",
-      streetAddress: "No.6 Jalan Bukit Mewah 9/12, Taman Bukit Mewah Fasa 9",
-      addressLocality: "Kajang",
-      addressRegion: "Selangor",
-      postalCode: "43000",
-      addressCountry: "MY",
-    },
+  "@type": "PostalAddress",
+  addressRegion: "Selangor",
+  addressCountry: "MY",
+  },
 
-    sameAs: [],
+    sameAs: [
+  "https://www.facebook.com/",
+  "https://www.linkedin.com/",
+],
 
     contactPoint: [
       {

@@ -1,301 +1,195 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
+  ArrowRight,
   Code2,
-  Globe,
-  Smartphone,
-  Building2,
   Monitor,
+  Briefcase,
   Plane,
   ClipboardCheck,
-  ArrowRight,
+  CheckCircle2,
 } from "lucide-react";
-import Link from "next/link";
-
 
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Explore XINFINITY HUB SOLUTIONS SDN. BHD.'s professional software development, ERP solutions, website development, mobile app development, IT hardware supply and digital business solutions in Malaysia.",
-
-  keywords: [
-    "Software Development Malaysia",
-    "ERP Malaysia",
-    "Website Development",
-    "Mobile App Development",
-    "IT Hardware Supply",
-    "Business Solutions",
-    "Custom Software Development",
-    "Digital Transformation",
-  ],
-
-  alternates: {
-    canonical: "/services",
-  },
-
-  openGraph: {
-    title: "Services | XINFINITY HUB SOLUTIONS SDN. BHD.",
-    description:
-      "Professional software development, ERP solutions, website development, mobile applications, IT hardware supply and digital business solutions.",
-    url: "/services",
-    type: "website",
-  },
-
-  twitter: {
-    card: "summary_large_image",
-    title: "Services | XINFINITY HUB SOLUTIONS SDN. BHD.",
-    description:
-      "Professional software development, ERP solutions, website development, mobile applications, IT hardware supply and digital business solutions.",
-  },
+    "Discover XINFINITY HUB SOLUTIONS SDN. BHD.'s complete business solutions including software development, AutoCount solutions, IT infrastructure, administration support, travel services and project & tender support.",
 };
 
 const services = [
   {
+    title: "Software & Digital Solutions",
+    description:
+      "Empowering businesses through enterprise software, AutoCount implementation, cloud solutions, website development, mobile applications and digital transformation.",
+    href: "/services/software-digital-solutions",
     icon: Code2,
-    title: "Custom Software Development",
-    description:
-      "We build secure, scalable and high-performance software tailored to your business requirements.",
+    color: "from-cyan-500 to-blue-600",
+    features: [
+      "Business Software",
+      "AutoCount Solutions",
+      "Website Development",
+      "Mobile Apps",
+      "Cloud Solutions",
+      "Cybersecurity",
+    ],
   },
   {
-    icon: Globe,
-    title: "Corporate Website Development",
+    title: "Hardware & IT Infrastructure",
     description:
-      "Modern responsive websites that strengthen your brand and generate business enquiries.",
-  },
-  {
-    icon: Smartphone,
-    title: "Mobile App Development",
-    description:
-      "Android and iOS mobile applications with intuitive user experiences and enterprise-grade architecture.",
-  },
-  {
-    icon: Building2,
-    title: "ERP & Business Solutions",
-    description:
-      "Accounting, Inventory, CRM, POS, HR and custom enterprise management systems.",
-  },
-  {
-    icon: ClipboardCheck,
-    title: "Project & Tender Support",
-    description:
-      "Professional administrative, tender documentation, project coordination and compliance support for Government, GLC and corporate organisations.",
-  },
-  {
+      "Reliable hardware supply, office IT setup, networking, servers, storage, CCTV, access control and technical support.",
+    href: "/services/hardware-it-infrastructure",
     icon: Monitor,
-    title: "IT Hardware Supply",
-    description:
-      "Supply and consultation for computers, networking equipment, POS devices and business hardware.",
+    color: "from-indigo-500 to-blue-700",
+    features: [
+      "Hardware Supply",
+      "Network Infrastructure",
+      "Server Solutions",
+      "Cloud Infrastructure",
+      "CCTV",
+      "IT Support",
+    ],
   },
   {
-    icon: Plane,
-    title: "Travel & Agency Services",
+    title: "Accounts, Administration & Manpower Support",
     description:
-      "Professional travel arrangements and agency services for corporate and individual clients.",
+      "Professional administrative, accounting, documentation and manpower solutions supporting efficient business operations.",
+    href: "/services/accounts-administration-manpower-support",
+    icon: Briefcase,
+    color: "from-emerald-500 to-teal-600",
+    features: [
+      "Bookkeeping",
+      "Administration",
+      "Documentation",
+      "AGM Preparation",
+      "Data Management",
+      "Manpower Supply",
+    ],
+  },
+  {
+    title: "Travel & Tour Services",
+    description:
+      "Comprehensive travel planning and coordination for business and leisure with seamless booking and support services.",
+    href: "/services/travel-tour-services",
+    icon: Plane,
+    color: "from-sky-500 to-cyan-600",
+    features: [
+      "Flight Booking",
+      "Hotel Booking",
+      "Corporate Travel",
+      "Airport Transfer",
+      "Travel Planning",
+      "Group Travel",
+    ],
+  },
+  {
+    title: "Project & Tender Support Services",
+    description:
+      "Professional documentation, compliance, tender preparation and project coordination for Government, GLC and corporate organisations.",
+    href: "/services/project-tender-support-services",
+    icon: ClipboardCheck,
+    color: "from-violet-500 to-fuchsia-600",
+    features: [
+      "Tender Documentation",
+      "Compliance Review",
+      "Project Coordination",
+      "Document Control",
+      "Submission Tracking",
+      "Reporting",
+    ],
   },
 ];
 
 export default function ServicesPage() {
   return (
-    <main className="bg-[#05070F] text-white">
-      <section className="relative overflow-hidden border-b border-white/10">
-  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(234,179,8,0.08),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(37,99,235,0.08),transparent_35%)]" />
+    <>
+      <section className="relative overflow-hidden border-b border-white/10 bg-[#050816]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(6,182,212,0.18),transparent_40%),radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.15),transparent_35%)]" />
 
-  <div className="container relative py-28">
-    <Link
-      href="/"
-      className="inline-flex items-center gap-2 rounded-full border border-yellow-500/30 bg-white/5 px-5 py-3 text-sm font-semibold text-yellow-400 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400 hover:bg-yellow-500 hover:text-black"
-    >
-      ← Back to Home
-    </Link>
+        <div className="container relative py-24 lg:py-32">
+          <div className="mx-auto max-w-4xl text-center">
+            <span className="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-5 py-2 text-sm font-semibold tracking-wide text-cyan-300">
+              Enterprise Business Solutions
+            </span>
 
-    <div className="mt-16">
-      <span className="inline-flex rounded-full border border-yellow-500/20 bg-yellow-500/10 px-5 py-2 text-sm font-semibold tracking-[0.18em] text-yellow-500">
-        OUR SERVICES
-      </span>
+            <h1 className="mt-8 text-5xl font-bold leading-tight text-white lg:text-7xl">
+              Complete Business
+              <span className="block bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                Solutions Under One Roof
+              </span>
+            </h1>
 
-      <h1 className="mt-6 max-w-4xl text-5xl font-black leading-tight lg:text-7xl">
-        Professional Technology
-        <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-white bg-clip-text text-transparent">
-          {" "}
-          Services
-        </span>
-      </h1>
-
-      <p className="mt-8 max-w-3xl text-lg leading-9 text-gray-300">
-        We deliver enterprise software, mobile applications, ERP systems,
-        websites and digital solutions designed to help organisations innovate,
-        automate and grow with confidence.
-      </p>
-    </div>
-  </div>
-</section>
-
-      <section className="py-24">
-        <div className="container grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-          {services.map((service) => {
-            const Icon = service.icon;
-
-            return (
-              <div
-                key={service.title}
-                className="rounded-3xl border border-white/10 bg-[#0B1120] p-8 transition duration-300 hover:-translate-y-2 hover:border-yellow-500"
-              >
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-yellow-500/10 text-yellow-500">
-                  <Icon size={32} />
-                </div>
-
-                <h2 className="text-2xl font-bold">{service.title}</h2>
-
-                <p className="mt-5 leading-8 text-gray-400">
-                  {service.description}
-                </p>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      <section className="border-y border-white/10 bg-[#08111D] py-24">
-  <div className="container">
-    <div className="mx-auto max-w-4xl text-center">
-      <span className="inline-flex rounded-full border border-yellow-500/20 bg-yellow-500/10 px-5 py-2 text-sm font-semibold tracking-[0.18em] text-yellow-500">
-        PROJECT & TENDER SUPPORT
-      </span>
-
-      <h2 className="mt-6 text-4xl font-black lg:text-5xl">
-        Project & Tender
-        <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-white bg-clip-text text-transparent">
-          {" "}
-          Support Services
-        </span>
-      </h2>
-
-      <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-gray-300">
-        We provide professional administrative, tender management and project
-        coordination services for Government Agencies, Government-Linked Companies
-        (GLCs), Public Listed Companies (PLCs), SMEs and Corporate Organisations.
-        From tender preparation to project completion, we help ensure
-        documentation, coordination and compliance are managed professionally,
-        accurately and on time.
-      </p>
-    </div>
-
-    <div className="mt-16 grid gap-8 md:grid-cols-2">
-      <div className="rounded-3xl border border-white/10 bg-[#0B1120] p-8">
-        <h3 className="text-2xl font-bold text-yellow-400">
-          📄 Tender Documentation
-        </h3>
-
-        <p className="mt-4 leading-8 text-gray-400">
-          Preparation, review, compilation and submission support to ensure your
-          tender documents are complete, accurate and professionally presented.
-        </p>
-      </div>
-
-      <div className="rounded-3xl border border-white/10 bg-[#0B1120] p-8">
-        <h3 className="text-2xl font-bold text-yellow-400">
-          📁 Administration Support
-        </h3>
-
-        <p className="mt-4 leading-8 text-gray-400">
-          Professional document management, reporting, filing, scheduling and
-          administrative coordination to keep projects organised and running
-          smoothly.
-        </p>
-      </div>
-
-      <div className="rounded-3xl border border-white/10 bg-[#0B1120] p-8">
-        <h3 className="text-2xl font-bold text-yellow-400">
-          📊 Project Coordination
-        </h3>
-
-        <p className="mt-4 leading-8 text-gray-400">
-          Coordinating communication between clients, consultants, contractors,
-          suppliers and stakeholders to ensure efficient project execution.
-        </p>
-      </div>
-
-      <div className="rounded-3xl border border-white/10 bg-[#0B1120] p-8">
-        <h3 className="text-2xl font-bold text-yellow-400">
-          📋 Compliance Support
-        </h3>
-
-        <p className="mt-4 leading-8 text-gray-400">
-          Documentation verification, submission tracking and compliance support
-          to help meet project requirements confidently and on time.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section className="py-24">
-  <div className="container">
-    <div className="mx-auto max-w-4xl text-center">
-      <span className="inline-flex rounded-full border border-yellow-500/20 bg-yellow-500/10 px-5 py-2 text-sm font-semibold tracking-[0.18em] text-yellow-500">
-        WHY CHOOSE US
-      </span>
-
-      <h2 className="mt-6 text-4xl font-black lg:text-5xl">
-        Why Businesses Trust
-        <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-white bg-clip-text text-transparent">
-          {" "}
-          XINFINITY HUB
-        </span>
-      </h2>
-
-      <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-gray-300">
-        We are committed to delivering reliable, professional and confidential
-        support throughout every stage of your project, ensuring smooth
-        coordination and efficient execution.
-      </p>
-    </div>
-
-    <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {[
-        "Professional & Confidential Service",
-        "Accurate Documentation Management",
-        "Experienced in Government, GLC & Corporate Projects",
-        "Timely Submission & Follow-Up",
-        "Efficient Stakeholder Coordination",
-        "Reliable Administrative Support",
-      ].map((item) => (
-        <div
-          key={item}
-          className="rounded-2xl border border-white/10 bg-[#0B1120] p-6 transition duration-300 hover:border-yellow-500 hover:-translate-y-1"
-        >
-          <div className="flex items-start gap-3">
-            <div className="mt-1 h-3 w-3 rounded-full bg-yellow-500" />
-            <p className="text-lg font-medium text-white">
-              {item}
+            <p className="mx-auto mt-8 max-w-3xl text-lg leading-8 text-slate-300">
+              XINFINITY HUB SOLUTIONS delivers integrated technology,
+              infrastructure, administration and business support services that
+              help organisations improve productivity, efficiency and long-term
+              growth.
             </p>
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
 
-<section className="bg-[#08111D] py-24">
-  <div className="container text-center">
-    <h2 className="text-5xl font-bold">
-      Need Professional Business Support?
-    </h2>
+      <section className="bg-[#0B1120] py-24">
+        <div className="container">
+          <div className="mb-16 text-center">
+            <h2 className="text-4xl font-bold text-white">
+              Our Core Business Services
+            </h2>
 
-    <p className="mx-auto mt-6 max-w-3xl text-lg text-gray-400">
-      Whether you need software development, ERP implementation, project
-      administration, tender documentation or IT solutions, our team is ready
-      to help you deliver successful business outcomes.
-    </p>
+            <p className="mx-auto mt-6 max-w-3xl text-slate-400">
+              We provide comprehensive business solutions designed to support
+              SMEs, corporate organisations, Government agencies and enterprise
+              clients through every stage of their digital transformation.
+            </p>
+          </div>
 
-    <Link
-      href="/contact"
-      className="mt-10 inline-flex items-center gap-2 rounded-xl bg-yellow-500 px-8 py-4 font-bold text-black transition hover:bg-yellow-400"
-    >
-      Get Quote
-      <ArrowRight size={20} />
-    </Link>
-  </div>
-</section>
-    </main>
+          <div className="grid gap-8 lg:grid-cols-2">
+            {services.map((service) => {
+              const Icon = service.icon;
+
+              return (
+                <div
+                  key={service.title}
+                  className="group rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur transition duration-300 hover:-translate-y-2 hover:border-cyan-500/40 hover:bg-white/10"
+                >
+                  <div
+                    className={`mb-8 inline-flex rounded-2xl bg-gradient-to-r ${service.color} p-5`}
+                  >
+                    <Icon className="h-8 w-8 text-white" />
+                  </div>
+
+                  <h3 className="text-3xl font-bold text-white">
+                    {service.title}
+                  </h3>
+
+                  <p className="mt-5 leading-8 text-slate-400">
+                    {service.description}
+                  </p>
+
+                  <div className="mt-8 grid gap-4">
+                    {service.features.map((feature) => (
+                      <div
+                        key={feature}
+                        className="flex items-center gap-3 text-slate-300"
+                      >
+                        <CheckCircle2 className="h-5 w-5 text-cyan-400" />
+                        {feature}
+                      </div>
+                    ))}
+                  </div>
+
+                  <Link
+                    href={service.href}
+                    className="mt-10 inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 font-semibold text-white transition hover:scale-105"
+                  >
+                    Explore Service
+                    <ArrowRight className="h-5 w-5" />
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

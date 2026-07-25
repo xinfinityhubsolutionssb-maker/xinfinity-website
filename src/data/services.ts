@@ -1,44 +1,45 @@
+import {
+  Code2,
+  Monitor,
+  Briefcase,
+  Plane,
+  ClipboardCheck,
+} from "lucide-react";
+
 export const services = [
   {
-    title: "Custom Software Development",
+    title: "Software & Digital Solutions",
+    slug: "software-digital-solutions",
+    icon: Code2,
     description:
-      "Tailored software solutions designed to streamline business operations and improve efficiency.",
-    icon: "Code",
+      "Comprehensive software, digital transformation, AutoCount implementation, web, mobile and cloud solutions tailored to modern businesses.",
   },
   {
-    title: "Mobile App Development",
+    title: "Hardware & IT Infrastructure",
+    slug: "hardware-it-infrastructure",
+    icon: Monitor,
     description:
-      "Android and iOS applications built with modern technologies for performance and scalability.",
-    icon: "Smartphone",
+      "Reliable hardware supply, network infrastructure, office IT setup, server deployment, security systems and technical support.",
   },
   {
-    title: "Website Development",
+    title: "Accounts, Administration & Manpower Support",
+    slug: "accounts-administration-manpower-support",
+    icon: Briefcase,
     description:
-      "Professional corporate websites, business portals, and e-commerce platforms.",
-    icon: "Globe",
+      "Professional accounting assistance, administration services, documentation management and skilled manpower support for business operations.",
   },
   {
-    title: "ERP & Business Systems",
+    title: "Travel & Tour Services",
+    slug: "travel-tour-services",
+    icon: Plane,
     description:
-      "Integrated business management systems for finance, inventory, sales, HR, and operations.",
-    icon: "Building2",
+      "Business and leisure travel solutions including flights, hotels, transportation, corporate travel and itinerary planning.",
   },
   {
-    title: "Project & Tender Support",
+    title: "Project & Tender Support Services",
+    slug: "project-tender-support-services",
+    icon: ClipboardCheck,
     description:
-      "Professional administrative, tender documentation, project coordination, and compliance support for Government, GLC, and corporate organizations.",
-    icon: "ClipboardCheck",
-  },
-  {
-    title: "Hardware Supply",
-    description:
-      "Supply of computers, networking equipment, POS systems, and business hardware solutions.",
-    icon: "Monitor",
-  },
-  {
-    title: "Travel & Agency Services",
-    description:
-      "Reliable travel arrangements and professional agency services for businesses and individuals.",
-    icon: "Plane",
+      "Professional tender documentation, project coordination, compliance support and administrative services for Government, GLC and corporate projects.",
   },
 ];

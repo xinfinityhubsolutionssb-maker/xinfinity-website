@@ -25,6 +25,11 @@ export const contactSchema = z.object({
     .optional()
     .or(z.literal("")),
 
+  service: z
+    .string()
+    .trim()
+    .min(1, "Please select a service."),
+
   subject: z
     .string()
     .trim()

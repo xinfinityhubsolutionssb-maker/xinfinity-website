@@ -1,55 +1,42 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, Home } from "lucide-react";
+import { Home, ArrowLeft } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <main className="relative flex min-h-screen items-center overflow-hidden bg-[#05070F] text-white">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(234,179,8,0.08),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(37,99,235,0.08),transparent_35%)]" />
+    <main className="flex min-h-screen items-center justify-center bg-[#05070F] px-6">
+      <div className="max-w-2xl text-center">
+        <p className="mb-4 text-lg font-semibold uppercase tracking-[0.35em] text-yellow-500">
+          Error 404
+        </p>
 
-      <div className="container relative py-24">
-        <div className="mx-auto max-w-4xl text-center">
-          <span className="inline-flex rounded-full border border-yellow-500/20 bg-yellow-500/10 px-5 py-2 text-sm font-semibold tracking-[0.18em] text-yellow-500">
-            ERROR 404
-          </span>
+        <h1 className="mb-6 text-6xl font-bold text-white md:text-7xl">
+          Page Not Found
+        </h1>
 
-          <h1 className="mt-8 text-8xl font-black leading-none text-yellow-500 lg:text-[10rem]">
-            404
-          </h1>
+        <p className="mx-auto mb-10 max-w-xl text-lg leading-8 text-slate-400">
+          The page you&apos;re looking for doesn&apos;t exist, has been moved, or
+          is temporarily unavailable.
+        </p>
 
-          <h2 className="mt-8 text-4xl font-black lg:text-6xl">
-            Page
-            <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-white bg-clip-text text-transparent">
-              {" "}
-              Not Found
-            </span>
-          </h2>
+        <div className="flex flex-wrap justify-center gap-4">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-yellow-500 to-amber-500 px-6 py-3 font-semibold text-black transition duration-300 hover:scale-105"
+          >
+            <Home size={18} />
+            Home
+          </Link>
 
-          <p className="mx-auto mt-8 max-w-2xl text-lg leading-9 text-gray-300">
-            The page you are looking for may have been moved, deleted or the URL
-            may be incorrect. Return to the homepage or go back to the previous
-            page.
-          </p>
-
-          <div className="mt-14 flex flex-wrap justify-center gap-5">
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 rounded-xl bg-yellow-500 px-8 py-4 font-bold text-black transition-all duration-300 hover:-translate-y-1 hover:bg-yellow-400"
-            >
-              <Home size={20} />
-              Back to Home
-            </Link>
-
-            <button
-              type="button"
-              onClick={() => window.history.back()}
-              className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-8 py-4 font-semibold text-white backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-yellow-500 hover:text-yellow-400"
-            >
-              <ArrowLeft size={20} />
-              Go Back
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={() => window.history.back()}
+            className="inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-6 py-3 font-semibold text-white backdrop-blur-xl transition duration-300 hover:border-yellow-500 hover:text-yellow-400"
+          >
+            <ArrowLeft size={18} />
+            Go Back
+          </button>
         </div>
       </div>
     </main>

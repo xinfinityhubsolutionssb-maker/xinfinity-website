@@ -1,11 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  ChevronDown,
+  MonitorSmartphone,
+} from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 
 import logo from "@/assets/logo/logo.png";
 import { navigation } from "@/data/navigation";
@@ -16,28 +21,44 @@ export default function Navbar() {
 
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [serviceOpen, setServiceOpen] = useState(false);
+  const serviceRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+  const handleScroll = () => {
+    setScrolled(window.scrollY > 20);
+  };
 
-    handleScroll();
+  handleScroll();
 
-    window.addEventListener("scroll", handleScroll);
+  window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const close = (e: MouseEvent) => {
+    if (
+      serviceRef.current &&
+      !serviceRef.current.contains(e.target as Node)
+    ) {
+      setServiceOpen(false);
+    }
+  };
+
+  document.addEventListener("mousedown", close);
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+    document.removeEventListener("mousedown", close);
+  };
+}, []);
 
   return (
     <header
-      className={`fixed inset-x-0 top-10 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-[100] transition-all duration-500 ${
         scrolled
-          ? "border-b border-yellow-500/20 bg-[#05070F]/95 shadow-2xl backdrop-blur-2xl"
-          : "border-b border-white/10 bg-[#05070F]/75 backdrop-blur-xl"
+        ? "border-b border-yellow-500/20 bg-[#05070F]/90 shadow-[0_20px_60px_rgba(0,0,0,.45)] backdrop-blur-3xl"
+        : "border-b border-white/10 bg-[#05070F]/60 backdrop-blur-2xl"
       }`}
     >
-      <div className="container flex h-20 items-center justify-between">
+      <div className="container flex h-[88px] items-center justify-between">
         {/* Logo */}
 
         <Link
@@ -49,7 +70,7 @@ export default function Navbar() {
             alt="XINFINITY HUB SOLUTIONS"
             width={52}
             height={52}
-            className="h-12 w-auto transition-all duration-500 group-hover:scale-105 group-hover:drop-shadow-[0_0_18px_rgba(234,179,8,0.45)]"
+            className="h-12 w-auto transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_28px_rgba(234,179,8,.65)]"
             priority
           />
 
@@ -67,40 +88,122 @@ export default function Navbar() {
         {/* Desktop Menu */}
 
         <nav className="hidden items-center gap-8 lg:flex">
-          {navigation.map((item) => {
-            const active =
-              pathname === item.href ||
-              (item.href !== "/" && pathname.startsWith(item.href));
+  {navigation.map((item) => {
+    if (item.href === "/services") {
+      return (
+        <div
+          key={item.title}
+          ref={serviceRef}
+          className="relative"
+          onMouseEnter={() => setServiceOpen(true)}
+          onMouseLeave={() => setServiceOpen(false)}
+        >
+          <button className="flex items-center gap-2 text-sm font-medium text-gray-300 transition hover:text-yellow-500">
+            Services
+            <ChevronDown
+              size={16}
+              className={`transition ${
+                serviceOpen ? "rotate-180" : ""
+              }`}
+            />
+          </button>
 
-            return (
-              <Link
-                  key={item.title}
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                className={`relative text-sm font-medium transition duration-300 ${
-                  active
-                    ? "text-yellow-500"
-                    : "text-gray-300 hover:text-yellow-500"
-                }`}
+          <AnimatePresence>
+            {serviceOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 15 }}
+                transition={{ duration: .2 }}
+                className="absolute left-1/2 top-10 w-[430px] -translate-x-1/2 rounded-3xl border border-white/10 bg-[#070B16]/95 p-6 shadow-2xl backdrop-blur-3xl"
               >
-                {item.title}
+                <div className="grid gap-3">
+                  {[
+                    {
+                      title: "Software & Digital Solutions",
+                      href: "/services/software-digital-solutions",
+                    },
+                    {
+                      title: "Hardware & IT Infrastructure",
+                      href: "/services/hardware-it-infrastructure",
+                    },
+                    {
+                      title:
+                        "Accounts, Administration & Manpower Support",
+                      href: "/services/accounts-administration-manpower-support",
+                    },
+                    {
+                      title: "Travel & Tour Services",
+                      href: "/services/travel-tour-services",
+                    },
+                    {
+                      title:
+                        "Project & Tender Support Services",
+                      href: "/services/project-tender-support-services",
+                    },
+                  ].map((service) => (
+                    <Link
+                      key={service.href}
+                      href={service.href}
+                      className="group flex items-center justify-between rounded-2xl border border-white/5 bg-white/5 p-4 transition hover:border-yellow-500/40 hover:bg-yellow-500/10"
+                    >
+                      <div className="flex items-center gap-3">
+                        <MonitorSmartphone
+                          size={18}
+                          className="text-yellow-500"
+                        />
 
-                <span
-                  className={`absolute -bottom-2 left-0 h-[2px] bg-yellow-500 transition-all duration-300 ${
-                    active ? "w-full" : "w-0"
-                  }`}
-                />
-              </Link>
-            );
-          })}
-        </nav>
+                        <span className="text-sm font-medium text-white">
+                          {service.title}
+                        </span>
+                      </div>
+
+                      <ArrowRight
+                        size={16}
+                        className="text-yellow-500 transition group-hover:translate-x-1"
+                      />
+                    </Link>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      );
+    }
+
+    const active =
+      pathname === item.href ||
+      (item.href !== "/" && pathname.startsWith(item.href));
+
+    return (
+      <Link
+        key={item.title}
+        href={item.href}
+        className={`relative text-sm font-medium transition ${
+          active
+            ? "text-yellow-500"
+            : "text-gray-300 hover:text-yellow-500"
+        }`}
+      >
+        {item.title}
+
+        <span
+          className={`absolute -bottom-2 left-0 h-[2px] bg-yellow-500 transition-all duration-300 ${
+            active ? "w-full" : "w-0"
+          }`}
+        />
+      </Link>
+    );
+  })}
+</nav>
 
         {/* CTA */}
 
         <Link
   href="/contact"
   onClick={() => setOpen(false)}
-  className="group relative hidden overflow-hidden rounded-full border border-yellow-500/30 bg-white/5 px-2 py-2 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-yellow-400 lg:inline-flex"
+  className="group relative hidden overflow-hidden rounded-full border border-yellow-500/30 bg-white/5 px-2 py-2 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_45px_rgba(234,179,8,.35)] hover:border-yellow-400 lg:inline-flex"
 >
   <span className="absolute inset-0 bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
@@ -125,61 +228,88 @@ export default function Navbar() {
 
         {/* Mobile Button */}
 
-        <button
-          type="button"
-          onClick={() => setOpen((prev) => !prev)}
-          aria-label="Toggle navigation"
-          className="text-3xl text-white transition hover:text-yellow-500 lg:hidden"
-        >
-          {open ? <HiX /> : <HiMenuAlt3 />}
-        </button>
+        <motion.button
+  type="button"
+  onClick={() => setOpen((prev) => !prev)}
+  aria-label="Toggle navigation"
+  whileTap={{ scale: 0.9 }}
+  className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl transition hover:border-yellow-500/40 hover:bg-yellow-500/10 lg:hidden"
+>
+  <AnimatePresence mode="wait">
+    {open ? (
+      <motion.div
+        key="close"
+        initial={{ rotate: -90, opacity: 0 }}
+        animate={{ rotate: 0, opacity: 1 }}
+        exit={{ rotate: 90, opacity: 0 }}
+        transition={{ duration: 0.2 }}
+      >
+        <HiX className="text-2xl text-white" />
+      </motion.div>
+    ) : (
+      <motion.div
+        key="menu"
+        initial={{ rotate: 90, opacity: 0 }}
+        animate={{ rotate: 0, opacity: 1 }}
+        exit={{ rotate: -90, opacity: 0 }}
+        transition={{ duration: 0.2 }}
+      >
+        <HiMenuAlt3 className="text-2xl text-white" />
+      </motion.div>
+    )}
+  </AnimatePresence>
+</motion.button>
       </div>
 
       {/* Mobile Menu */}
 
-      <div
-        className={`overflow-hidden border-t border-white/10 bg-[#05070F]/95 backdrop-blur-xl transition-all duration-300 lg:hidden ${
-          open ? "max-h-[600px]" : "max-h-0"
-        }`}
-      >
-        <div className="container py-6">
-          {navigation.map((item) => {
-            const active =
-              pathname === item.href ||
-              (item.href !== "/" && pathname.startsWith(item.href));
+      <AnimatePresence>
+  {open && (
+    <motion.div
+      initial={{ opacity: 0, height: 0 }}
+      animate={{ opacity: 1, height: "auto" }}
+      exit={{ opacity: 0, height: 0 }}
+      transition={{ duration: 0.25 }}
+      className="overflow-hidden border-t border-white/10 bg-[#05070F]/95 backdrop-blur-3xl lg:hidden"
+    >
+      <div className="container space-y-2 py-6">
+        {navigation.map((item) => {
+          const active =
+            pathname === item.href ||
+            (item.href !== "/" && pathname.startsWith(item.href));
 
-            return (
-              <Link
-                key={item.title}
-                href={item.href}
-                className={`block rounded-lg px-3 py-4 transition ${
-                  active
-                    ? "bg-yellow-500/10 text-yellow-500"
-                    : "text-gray-300 hover:bg-white/5 hover:text-yellow-500"
-                }`}
-              >
-                {item.title}
-              </Link>
-            );
-          })}
+          return (
+            <Link
+              key={item.title}
+              href={item.href}
+              onClick={() => setOpen(false)}
+              className={`block rounded-2xl px-4 py-4 transition ${
+                active
+                  ? "bg-yellow-500/10 text-yellow-500"
+                  : "text-gray-300 hover:bg-white/5 hover:text-yellow-500"
+              }`}
+            >
+              {item.title}
+            </Link>
+          );
+        })}
 
-          <Link
-  href="/contact"
-  className="group mt-6 flex items-center justify-center gap-3 overflow-hidden rounded-2xl border border-yellow-500/30 bg-white/5 px-5 py-4 font-semibold text-white backdrop-blur transition-all duration-300 hover:border-yellow-400 hover:bg-yellow-500 hover:text-black"
->
-  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-yellow-500 text-black transition-transform duration-300 group-hover:rotate-12">
-    ✦
-  </span>
+        <Link
+          href="/contact"
+          onClick={() => setOpen(false)}
+          className="group mt-6 flex items-center justify-center gap-3 rounded-2xl border border-yellow-500/30 bg-gradient-to-r from-yellow-500 to-amber-500 px-6 py-4 font-semibold text-black transition hover:scale-[1.02]"
+        >
+          <span>Get Quote</span>
 
-  <span>Get Quote</span>
-
-  <ArrowRight
-    size={18}
-    className="transition-transform duration-300 group-hover:translate-x-1"
-  />
-</Link>
-        </div>
+          <ArrowRight
+            size={18}
+            className="transition group-hover:translate-x-1"
+          />
+        </Link>
       </div>
+    </motion.div>
+  )}
+</AnimatePresence>
     </header>
   );
 }

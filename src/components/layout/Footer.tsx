@@ -1,198 +1,165 @@
-import Image from "next/image";
 import Link from "next/link";
-
-import { Mail, Phone, MapPin } from "lucide-react";
 import {
-  FaFacebookF,
-  FaInstagram,
-  FaLinkedinIn,
-} from "react-icons/fa6";
+  Mail,
+  Phone,
+  Clock,
+  ArrowUpRight,
+} from "lucide-react";
 
-import logo from "@/assets/logo/logo.png";
+import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import { siteConfig } from "@/config/site";
 
-const services = [
-  "Software Development",
-  "ERP Solutions",
-  "Mobile Applications",
-  "Website Development",
-  "Hardware Supply",
-  "Travel Services",
-];
-
-const quickLinks = [
-  { title: "Home", href: "/" },
-  { title: "About", href: "/about" },
-  { title: "Services", href: "/services" },
-  { title: "Solutions", href: "/solutions" },
-  { title: "Industries", href: "/industries" },
-  { title: "Contact", href: "/contact" },
-];
-
 export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="border-t border-white/10 bg-[#030712]">
-      <div className="container py-20">
+    <footer className="border-t border-white/10 bg-[#07111F] text-white">
+      <div className="container py-16">
         <div className="grid gap-12 lg:grid-cols-4">
           {/* Company */}
           <div>
-            <Image
-              src={logo}
-              alt="XINFINITY HUB SOLUTIONS"
-              width={70}
-              height={70}
-              className="mb-5"
-            />
+            <h3 className="text-2xl font-bold">{siteConfig.shortName}</h3>
 
-            <h2 className="text-2xl font-bold text-yellow-500">
-              XINFINITY
-            </h2>
-
-            <p className="mt-5 leading-8 text-gray-400">
-              Professional software development, enterprise business solutions,
-              websites, mobile applications, ERP systems, IT hardware and
-              digital transformation services.
+            <p className="mt-5 leading-7 text-slate-400">
+              Transforming Businesses Through Innovative Technology.
             </p>
-          </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="mb-6 text-xl font-bold">
-              Quick Links
-            </h3>
+            <div className="mt-6 flex gap-4">
+              <a
+                href="#"
+                className="rounded-xl border border-white/10 p-3 transition hover:border-cyan-400 hover:text-cyan-300"
+              >
+                <FaFacebookF className="h-5 w-5" />
+              </a>
 
-            <ul className="space-y-4">
-              {quickLinks.map((item) => (
-                <li key={item.title}>
-                  <Link
-                    href={item.href}
-                    className="text-gray-400 transition hover:text-yellow-500"
-                  >
-                    {item.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+              <a
+                href="#"
+                className="rounded-xl border border-white/10 p-3 transition hover:border-cyan-400 hover:text-cyan-300"
+              >
+                <FaLinkedinIn className="h-5 w-5" />
+              </a>
+            </div>
           </div>
 
           {/* Services */}
           <div>
-            <h3 className="mb-6 text-xl font-bold">
-              Our Services
-            </h3>
+            <h4 className="text-lg font-semibold">Services</h4>
 
-            <ul className="space-y-4">
-              {services.map((item) => (
-                <li
-                  key={item}
-                  className="text-gray-400"
-                >
-                  {item}
-                </li>
-              ))}
+            <ul className="mt-5 space-y-3 text-slate-400">
+              <li>
+                <Link href="/services/software-digital-solutions" className="hover:text-cyan-300">
+                  Software & Digital Solutions
+                </Link>
+              </li>
+
+              <li>
+                <Link href="/services/hardware-supply" className="hover:text-cyan-300">
+                  IT Hardware Supply
+                </Link>
+              </li>
+
+              <li>
+                <Link href="/services/travel-services" className="hover:text-cyan-300">
+                  Travel Services
+                </Link>
+              </li>
+
+              <li>
+                <Link href="/contact" className="hover:text-cyan-300">
+                  Business Consultation
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="text-lg font-semibold">Quick Links</h4>
+
+            <ul className="mt-5 space-y-3 text-slate-400">
+              <li>
+                <Link href="/" className="hover:text-cyan-300">
+                  Home
+                </Link>
+              </li>
+
+              <li>
+                <Link href="/about" className="hover:text-cyan-300">
+                  About Us
+                </Link>
+              </li>
+
+              <li>
+                <Link href="/services" className="hover:text-cyan-300">
+                  Services
+                </Link>
+              </li>
+
+              <li>
+                <Link href="/contact" className="hover:text-cyan-300">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h3 className="mb-6 text-xl font-bold">
-              Contact Us
-            </h3>
+            <h4 className="text-lg font-semibold">Contact</h4>
 
-            <div className="space-y-5">
-              <a
-                href={`tel:${siteConfig.phone}`}
-                className="flex gap-3 text-gray-400 transition hover:text-yellow-500"
-              >
-                <Phone
-                  className="mt-1 text-yellow-500"
-                  size={18}
-                />
-
+            <div className="mt-5 space-y-5 text-slate-400">
+              <div className="flex items-start gap-3">
+                <Phone className="mt-1 h-5 w-5 text-cyan-400" />
                 <span>{siteConfig.phone}</span>
-              </a>
-
-              <a
-                href={`mailto:${siteConfig.email}`}
-                className="flex gap-3 text-gray-400 transition hover:text-yellow-500"
-              >
-                <Mail
-                  className="mt-1 text-yellow-500"
-                  size={18}
-                />
-
-                <span className="break-all">
-                  {siteConfig.email}
-                </span>
-              </a>
-
-              <div className="flex gap-3">
-                <MapPin
-                  className="mt-1 text-yellow-500"
-                  size={18}
-                />
-
-                <span className="whitespace-pre-line text-gray-400">
-                  {siteConfig.address}
-                </span>
               </div>
+
+              <div className="flex items-start gap-3">
+                <Mail className="mt-1 h-5 w-5 text-cyan-400" />
+                <span>{siteConfig.email}</span>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <Clock className="mt-1 h-5 w-5 text-cyan-400" />
+
+                <div>
+                  <p className="font-medium text-white">Business Hours</p>
+
+                  <p className="mt-2">
+                    Monday - Friday
+                    <br />
+                    9:00 AM - 5:30 PM
+                  </p>
+
+                  <p className="mt-3">
+                    Saturday
+                    <br />
+                    9:00 AM - 1:00 PM
+                  </p>
+
+                  <p className="mt-3">
+                    Sunday
+                    <br />
+                    Off
+                  </p>
+                </div>
+              </div>
+
+              <Link
+                href="/contact"
+                className="inline-flex items-center font-semibold text-cyan-300 hover:text-cyan-200"
+              >
+                Get Quote
+                <ArrowUpRight className="ml-2 h-4 w-4" />
+              </Link>
             </div>
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col gap-6 border-t border-white/10 pt-8 lg:flex-row lg:items-center lg:justify-between">
-          <p className="text-center text-gray-500 lg:text-left">
-            © {new Date().getFullYear()} {siteConfig.companyName}. All Rights
+        <div className="mt-16 border-t border-white/10 pt-8">
+          <p className="text-center text-sm text-slate-400">
+            Copyright © {year} XINFINITY HUB SOLUTIONS SDN. BHD. All Rights
             Reserved.
           </p>
-
-          <div className="flex items-center justify-center gap-6 text-sm">
-            <Link
-              href="/privacy-policy"
-              className="text-gray-500 transition hover:text-yellow-500"
-            >
-              Privacy Policy
-            </Link>
-
-            <Link
-              href="/terms"
-              className="text-gray-500 transition hover:text-yellow-500"
-            >
-              Terms & Conditions
-            </Link>
-          </div>
-
-          <div className="flex justify-center gap-5">
-            <a
-              href={siteConfig.socials?.facebook || "#"}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-              className="rounded-full border border-white/10 p-3 transition hover:border-yellow-500 hover:text-yellow-500"
-            >
-              <FaFacebookF size={18} />
-            </a>
-
-            <a
-              href={siteConfig.socials?.instagram || "#"}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-              className="rounded-full border border-white/10 p-3 transition hover:border-yellow-500 hover:text-yellow-500"
-            >
-              <FaInstagram size={18} />
-            </a>
-
-            <a
-              href={siteConfig.socials?.linkedin || "#"}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="rounded-full border border-white/10 p-3 transition hover:border-yellow-500 hover:text-yellow-500"
-            >
-              <FaLinkedinIn size={18} />
-            </a>
-          </div>
         </div>
       </div>
     </footer>

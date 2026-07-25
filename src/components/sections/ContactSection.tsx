@@ -36,6 +36,7 @@ export default function ContactSection() {
       subject: "",
       message: "",
       website: "",
+      service: "",
     },
   });
 
@@ -159,6 +160,34 @@ export default function ContactSection() {
                   className="w-full rounded-xl border border-white/10 bg-black/20 px-5 py-4 text-white outline-none transition focus:border-yellow-500"
                 />
               </div>
+
+<div>
+  <select
+    {...register("service")}
+    className="w-full rounded-xl border border-white/10 bg-black/20 px-5 py-4 text-white outline-none transition focus:border-yellow-500"
+  >
+    <option value="">Select Service Required *</option>
+    <option>AutoCount Software</option>
+    <option>Custom Software Development</option>
+    <option>ERP Solution</option>
+    <option>Website Development</option>
+    <option>Mobile App Development</option>
+    <option>AI Solutions</option>
+    <option>Cloud Solutions</option>
+    <option>IT Hardware Supply</option>
+    <option>Technical Support</option>
+    <option>Business Consultation</option>
+    <option>Travel & Tour Services</option>
+    <option>Project & Tender Support</option>
+    <option>Other</option>
+  </select>
+
+  {errors.service && (
+    <p className="mt-2 text-sm text-red-400">
+      {errors.service.message}
+    </p>
+  )}
+</div>
 
               <div>
                 <input

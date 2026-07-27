@@ -142,11 +142,8 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 
   verification: {
-    google: "GOOGLE_SEARCH_CONSOLE_VERIFICATION",
-    other: {
-      "msvalidate.01": ["BING_VERIFICATION_CODE"],
-    },
-  },
+  google: "m9VGR7wtgXuwLCmhbbC1ZtfYlc6l1hjr7v7YdXVaMwA",
+},
 
   appleWebApp: {
     capable: true,

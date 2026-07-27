@@ -6,11 +6,11 @@ export default function OrganizationSchema() {
     name: "XINFINITY HUB SOLUTIONS SDN. BHD.",
     legalName: "XINFINITY HUB SOLUTIONS SDN. BHD.",
 
-    url: "https://www.xinfinityhub.com",
+    url: "https://xinfinity-hub-solutions.vercel.app",
 
-    logo: "https://www.xinfinityhub.com/icon-512.png",
+    logo: "https://xinfinity-hub-solutions.vercel.app/icon-512.png",
 
-    image: "https://www.xinfinityhub.com/og-image.jpg",
+    image: "https://xinfinity-hub-solutions.vercel.app/og-image.jpg",
 
     email: "mailto:xinfinityhubsolutionssb@gmail.com",
 

@@ -1,15 +1,10 @@
 import { MetadataRoute } from "next";
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://www.xinfinityhub.com";
-
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
-
   return [
     {
-      url: siteUrl,
-      lastModified: now,
+      url: "https://TEST-SITEMAP-123.vercel.app",
+      lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
     },

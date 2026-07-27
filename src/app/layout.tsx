@@ -142,7 +142,7 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 
   verification: {
-  google: "m9VGR7wtgXuwLCmhbbC1ZtfYlc6l1hjr7v7YdXVaMwA",
+  google: "Y0Dwr6kcoDTYeXTTaktzg3cIZasRZgzNYyK7AcWUoaQ",
 },
 
   appleWebApp: {

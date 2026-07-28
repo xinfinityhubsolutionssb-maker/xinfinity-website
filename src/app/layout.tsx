@@ -22,7 +22,7 @@ const poppins = Poppins({
 });
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://xinfinity-hub-solutions.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://xinfinityhub.vercel.app";
 
 const siteName = "XINFINITY HUB SOLUTIONS SDN. BHD.";
 

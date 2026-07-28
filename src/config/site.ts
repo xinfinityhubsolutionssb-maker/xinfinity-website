@@ -6,7 +6,7 @@ export const siteConfig = {
 
   tagline: "Transforming Businesses Through Innovative Technology",
 
-  website: "https://xinfinity-hub-solutions.vercel.app",
+  website: "https://xinfinityhub.vercel.app",
 
   email: "xinfinityhubsolutionssb@gmail.com",
 

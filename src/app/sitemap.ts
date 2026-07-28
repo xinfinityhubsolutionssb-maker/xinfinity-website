@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 86400; // regenerate once per day
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
